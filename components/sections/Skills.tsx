@@ -42,7 +42,7 @@ const categories = [
 
 export function Skills() {
   return (
-  <section id="skills" className="section-padding bg-neutral-50 dark:bg-neutral-950/40 relative overflow-hidden">
+  <section id="skills" className="section-padding bg-neutral-50 dark:bg-neutral-950/40 relative overflow-hidden scroll-mt-24">
       <CosmicBackground
         stars={55}
         meteors={2}

@@ -68,7 +68,7 @@ export function Projects() {
   const closeProject = () => setActive(null);
 
   return (
-  <section id="projects" className="section-padding relative overflow-hidden">
+  <section id="projects" className="section-padding relative overflow-hidden scroll-mt-24">
       <CosmicBackground
         stars={50}
         meteors={2}

@@ -5,7 +5,7 @@ import { CosmicBackground } from "../ui/CosmicBackground";
 
 export function About() {
   return (
-  <section id="about" className="section-padding relative overflow-hidden">
+  <section id="about" className="section-padding relative overflow-hidden scroll-mt-24">
       <CosmicBackground
         stars={45}
         meteors={1}
@@ -22,7 +22,7 @@ export function About() {
             I'm a passionate full-stack developer with experience building modern web applications. I enjoy solving complex problems with clean and efficient code, and crafting user experiences that delight.
           </p>
           <p className="text-neutral-600 dark:text-neutral-300 leading-relaxed">
-            My focus is on React, Next.js, Node.js and cloud-native solutions. I'm always exploring new tools and best practices to improve performance and maintainability.
+            My focus is on MERN stack development, Next.js, SQL databases, and GitHub workflows. I’m always exploring new tools and best practices to improve performance, scalability, and maintainability.
           </p>
           <div className="flex gap-4">
             {/* Updated to use your actual PDF file in /public (spaces URL-encoded). */}

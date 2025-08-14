@@ -24,7 +24,7 @@ export function Contact() {
   }
 
   return (
-  <section id="contact" className="section-padding relative overflow-hidden">
+  <section id="contact" className="section-padding relative overflow-hidden scroll-mt-24">
       <CosmicBackground
         stars={40}
         meteors={1}
