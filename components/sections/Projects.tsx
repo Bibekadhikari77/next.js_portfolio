@@ -1,7 +1,7 @@
 "use client";
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
-import { useState } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { CosmicBackground } from "../ui/CosmicBackground";
 
 const allProjects = [
@@ -10,7 +10,8 @@ const allProjects = [
     title: 'Next.js Dashboard',
     category: 'Web',
     image: 'https://images.unsplash.com/photo-1558655146-364adaf1fcc9?w=600&q=80&auto=format&fit=crop',
-    description: 'Interactive analytics dashboard built with Next.js, featuring responsive UI, reusable components, and modern styling.',
+  description: 'Interactive analytics dashboard built with Next.js, featuring responsive UI, reusable components, and modern styling.',
+  longDescription: 'This dashboard showcases dynamic data visualization, modular component architecture, route-based code splitting, and responsive design patterns. Built with accessibility and performance in mind, it leverages Next.js server components for faster initial loads and Tailwind utility classes for rapid UI iteration.',
     tech: ['Next.js', 'Tailwind', 'TypeScript'],
     github: 'https://github.com/Bibekadhikari77/nextjs-dashboard',
     demo: '#'
@@ -21,6 +22,7 @@ const allProjects = [
     category: 'Mobile',
     image: 'https://images.unsplash.com/photo-1587620931283-d91f0d4a8e21?w=600&q=80',
     description: 'Cross-platform mobile app with React Native.',
+  longDescription: 'A cross-platform mobile application leveraging React Native and Expo for rapid development, featuring offline support and smooth animations.',
     tech: ['React Native', 'Expo'],
     github: '#',
     demo: '#'
@@ -31,6 +33,7 @@ const allProjects = [
     category: 'Web',
     image: 'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=600&q=80',
     description: 'Real-time dashboard with websockets.',
+  longDescription: 'Real-time dashboard utilizing WebSockets (Socket.IO) for live updates, featuring data streaming, optimistic UI, and scalable Node.js backend patterns.',
     tech: ['Next.js', 'Socket.IO', 'Node.js'],
     github: '#',
     demo: '#'
@@ -41,7 +44,29 @@ const categories = ['All', 'Web', 'Mobile'];
 
 export function Projects() {
   const [filter, setFilter] = useState('All');
+  const [active, setActive] = useState<typeof allProjects[number] | null>(null);
   const filtered = filter === 'All' ? allProjects : allProjects.filter(p => p.category === filter);
+
+  // ESC to close modal
+  const handleKey = useCallback((e: KeyboardEvent) => {
+    if (e.key === 'Escape') setActive(null);
+  }, []);
+  useEffect(() => {
+    if (active) {
+      document.addEventListener('keydown', handleKey);
+      document.documentElement.style.overflow = 'hidden';
+    } else {
+      document.documentElement.style.overflow = '';
+    }
+    return () => {
+      document.removeEventListener('keydown', handleKey);
+      document.documentElement.style.overflow = '';
+    };
+  }, [active, handleKey]);
+
+  const openProject = (p: typeof allProjects[number]) => setActive(p);
+  const closeProject = () => setActive(null);
+
   return (
   <section id="projects" className="section-padding relative overflow-hidden">
       <CosmicBackground
@@ -102,14 +127,91 @@ export function Projects() {
                     {p.tech.map(t => <span key={t} className="text-xs px-2 py-1 rounded-md bg-neutral-100 dark:bg-neutral-800">{t}</span>)}
                   </div>
                   <div className="flex gap-3 pt-2">
-                    <a href={p.demo} className="text-sm font-medium px-4 py-2 rounded-md bg-primary-600 text-white hover:bg-primary-500">Live Demo</a>
-                    <a href={p.github} className="text-sm font-medium px-4 py-2 rounded-md border border-neutral-300 dark:border-neutral-700 hover:bg-neutral-100 dark:hover:bg-neutral-800">GitHub</a>
+                    <button
+                      onClick={() => openProject(p)}
+                      className="text-sm font-medium px-4 py-2 rounded-md bg-primary-600 text-white hover:bg-primary-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500"
+                      aria-haspopup="dialog"
+                      aria-controls="project-modal"
+                    >
+                      Details
+                    </button>
+                    <a
+                      href={p.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-sm font-medium px-4 py-2 rounded-md border border-neutral-300 dark:border-neutral-700 hover:bg-neutral-100 dark:hover:bg-neutral-800"
+                    >GitHub</a>
                   </div>
                 </div>
               </motion.div>
             ))}
           </AnimatePresence>
         </div>
+        {/* Modal */}
+        <AnimatePresence>
+          {active && (
+            <motion.div
+              key="overlay"
+              className="fixed inset-0 z-50 flex items-center justify-center p-4 backdrop-blur-sm bg-neutral-900/50"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={closeProject}
+            >
+              <motion.div
+                id="project-modal"
+                role="dialog"
+                aria-modal="true"
+                aria-labelledby="project-modal-title"
+                className="relative w-full max-w-2xl rounded-2xl border border-neutral-200 dark:border-neutral-700 bg-white dark:bg-neutral-900 shadow-2xl overflow-hidden"
+                initial={{ opacity: 0, y: 40, scale: 0.95 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                exit={{ opacity: 0, y: 30, scale: 0.97 }}
+                transition={{ type: 'spring', stiffness: 180, damping: 22 }}
+                onClick={e => e.stopPropagation()}
+              >
+                <div className="relative h-60">
+                  <Image src={active.image} alt={active.title} fill className="object-cover" />
+                  <div className="absolute inset-0 bg-gradient-to-tr from-neutral-900/60 via-neutral-900/20 to-transparent" />
+                  <button
+                    onClick={closeProject}
+                    className="absolute top-3 right-3 rounded-full bg-neutral-900/70 text-white px-3 py-1 text-xs font-medium hover:bg-neutral-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500"
+                    aria-label="Close details"
+                  >Close</button>
+                </div>
+                <div className="p-6 space-y-4">
+                  <div className="flex flex-col gap-2">
+                    <h3 id="project-modal-title" className="text-2xl font-semibold tracking-tight">{active.title}</h3>
+                    <p className="text-sm text-neutral-600 dark:text-neutral-300 leading-relaxed">{active.longDescription || active.description}</p>
+                  </div>
+                  <div className="flex flex-wrap gap-2">
+                    {active.tech.map(t => (
+                      <span key={t} className="text-xs px-2 py-1 rounded-md bg-primary-50 text-primary-700 dark:bg-primary-500/10 dark:text-primary-300 border border-primary-200/60 dark:border-primary-500/30">{t}</span>
+                    ))}
+                  </div>
+                  <div className="flex gap-3 pt-2">
+                    {active.github !== '#' && (
+                      <a
+                        href={active.github}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-sm font-medium px-4 py-2 rounded-md bg-neutral-900 text-white dark:bg-white dark:text-neutral-900 hover:opacity-90"
+                      >GitHub</a>
+                    )}
+                    {active.demo !== '#' && (
+                      <a
+                        href={active.demo}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-sm font-medium px-4 py-2 rounded-md bg-primary-600 text-white hover:bg-primary-500"
+                      >Live Demo</a>
+                    )}
+                  </div>
+                </div>
+              </motion.div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
     </section>
   );
