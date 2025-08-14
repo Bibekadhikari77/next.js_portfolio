@@ -1,5 +1,16 @@
 import { NextResponse } from 'next/server';
-import nodemailer from 'nodemailer';
+// Ensure Node.js runtime (not Edge) so nodemailer works
+export const runtime = 'nodejs';
+export const dynamic = 'force-dynamic';
+
+// Lazy require nodemailer to avoid potential bundling issues in certain builds
+let nodemailer: typeof import('nodemailer');
+try {
+  // eslint-disable-next-line @typescript-eslint/no-var-requires
+  nodemailer = require('nodemailer');
+} catch (e) {
+  console.warn('Failed to load nodemailer, falling back to console logging only.', e);
+}
 
 interface ContactPayload { name: string; email: string; message: string }
 
@@ -26,10 +37,18 @@ export async function POST(request: Request) {
       return NextResponse.json({ success: true, fallback: true });
     }
 
+    if (!nodemailer) {
+      console.log('Contact message (nodemailer unavailable):', { name, email, message });
+      return NextResponse.json({ success: true, fallback: true });
+    }
+
     const transporter = nodemailer.createTransport({
       service: 'gmail',
       auth: { user: smtpUser, pass: smtpPass }
     });
+
+    // Optional verify (non-blocking). Ignore errors here.
+  transporter.verify().catch((err: unknown) => console.warn('SMTP verify failed (continuing):', err));
 
     const mailOptions = {
       from: `Portfolio Contact <${smtpUser}>`,
