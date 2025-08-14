@@ -17,15 +17,15 @@ const allProjects = [
     demo: '#'
   },
   {
-    id: 'p2',
-    title: 'Project Two',
-    category: 'Mobile',
-    image: 'https://images.unsplash.com/photo-1587620931283-d91f0d4a8e21?w=600&q=80',
-    description: 'Cross-platform mobile app with React Native.',
-  longDescription: 'A cross-platform mobile application leveraging React Native and Expo for rapid development, featuring offline support and smooth animations.',
-    tech: ['React Native', 'Expo'],
-    github: '#',
-    demo: '#'
+  id: 'blog-app',
+  title: 'Blog App',
+  category: 'Web',
+  image: 'https://images.unsplash.com/photo-1515377905703-c4788e51af15?w=600&q=80&auto=format&fit=crop',
+  description: 'Full‑stack blogging platform with CRUD posts, auth, and rich text editing.',
+  longDescription: 'A full-featured blogging application supporting user authentication, post creation with rich text/Markdown editor, tag-based categorization, dynamic routing, and SEO-friendly meta tags. Implements secure API routes, optimistic UI updates, pagination, and reusable UI primitives. Focus on accessibility, performance, and clean folder architecture.',
+  tech: ['Next.js', 'TypeScript', 'Tailwind', 'Prisma', 'PostgreSQL', 'Auth'],
+  github: 'https://github.com/Bibekadhikari77/blog-app',
+  demo: '#'
   },
   {
     id: 'p3',
