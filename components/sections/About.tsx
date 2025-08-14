@@ -25,7 +25,14 @@ export function About() {
             My focus is on React, Next.js, Node.js and cloud-native solutions. I'm always exploring new tools and best practices to improve performance and maintainability.
           </p>
           <div className="flex gap-4">
-            <a href="/resume.pdf" download className="px-5 py-3 rounded-md bg-primary-600 text-white font-medium hover:bg-primary-500">Download Resume</a>
+            {/* Updated to use your actual PDF file in /public (spaces URL-encoded). */}
+            <a
+              href="/Bibek%20Adhikari.pdf"
+              download="Bibek-Adhikari-Resume.pdf"
+              className="px-5 py-3 rounded-md bg-primary-600 text-white font-medium hover:bg-primary-500"
+            >
+              Download Resume
+            </a>
           </div>
         </motion.div>
         <motion.div initial={{ opacity: 0, x: 40 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="relative h-80">
