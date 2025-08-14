@@ -21,22 +21,22 @@ const allProjects = [
   title: 'Blog App',
   category: 'Web',
   image: 'https://images.unsplash.com/photo-1517180102446-f3ece451e9d8?w=600&q=80&auto=format&fit=crop',
-  description: 'Full‑stack blogging platform with CRUD posts, auth, and rich text editing.',
-  longDescription: 'A full-featured blogging application supporting user authentication, post creation with rich text/Markdown editor, tag-based categorization, dynamic routing, and SEO-friendly meta tags. Implements secure API routes, optimistic UI updates, pagination, and reusable UI primitives. Focus on accessibility, performance, and clean folder architecture.',
-  tech: ['Next.js', 'TypeScript', 'Tailwind', 'Prisma', 'PostgreSQL', 'Auth'],
+  description: 'Backend for a blogging platform with CRUD posts, authentication, and image uploads using Multer and Cloudinary. Built with Node.js, Express, and version-controlled via GitHub.',
+  longDescription: 'Backend for a full-featured blogging application supporting user authentication, post creation with rich text/Markdown editor, tag-based categorization, and secure API routes. Handles image uploads via Multer and Cloudinary, dynamic routing, pagination, and reusable backend logic. Focuses on performance, scalability, and clean folder architecture, with version control via GitHub.',
+  tech: ['Node.js', 'Express', 'Multer', 'GitHub', 'Cloudinary'],
   github: 'https://github.com/Bibekadhikari77/blog-app',
   demo: '#'
   },
   {
-    id: 'p3',
-    title: 'Project Three',
-    category: 'Web',
-    image: 'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=600&q=80',
-    description: 'Real-time dashboard with websockets.',
-  longDescription: 'Real-time dashboard utilizing WebSockets (Socket.IO) for live updates, featuring data streaming, optimistic UI, and scalable Node.js backend patterns.',
-    tech: ['Next.js', 'Socket.IO', 'Node.js'],
-    github: '#',
-    demo: '#'
+  id: 'ecommerce-backend',
+  title: 'E‑commerce Backend',
+  category: 'Web',
+  image: 'https://images.unsplash.com/photo-1515165562835-c4c3b2f56a79?w=600&q=80&auto=format&fit=crop',
+  description: 'REST API for products, users, cart and orders with secure auth & data validation.',
+  longDescription: 'Backend service powering an e‑commerce platform: layered architecture with Express routes, controllers and middleware; JWT based authentication & authorization; product, user, cart and order resources; MongoDB with Mongoose models; input validation & error handling; pagination & filtering utilities; environment‑driven configuration. Designed for extensibility (payments, inventory) and production hardening.',
+  tech: ['Node.js', 'Express', 'MongoDB', 'Mongoose', 'JWT'],
+  github: 'https://github.com/Bibekadhikari77/E-commerce-backend-',
+  demo: '#'
   }
 ];
 
