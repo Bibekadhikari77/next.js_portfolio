@@ -31,7 +31,7 @@ const allProjects = [
   id: 'ecommerce-backend',
   title: 'E‑commerce Backend',
   category: 'Web',
-  image: 'https://images.unsplash.com/photo-1515165562835-c4c3b2f56a79?w=600&q=80&auto=format&fit=crop',
+  image: '/e-website.jpg',
   description: 'REST API for products, users, cart and orders with secure auth & data validation.',
   longDescription: 'Backend service powering an e‑commerce platform: layered architecture with Express routes, controllers and middleware; JWT based authentication & authorization; product, user, cart and order resources; MongoDB with Mongoose models; input validation & error handling; pagination & filtering utilities; environment‑driven configuration. Designed for extensibility (payments, inventory) and production hardening.',
   tech: ['Node.js', 'Express', 'MongoDB', 'Mongoose', 'JWT'],
@@ -152,7 +152,7 @@ export function Projects() {
           {active && (
             <motion.div
               key="overlay"
-              className="fixed inset-0 z-50 flex items-center justify-center p-4 backdrop-blur-sm bg-neutral-900/50"
+              className="fixed inset-0 z-[90] flex items-start justify-center pt-24 p-4 backdrop-blur-sm bg-neutral-900/50"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
