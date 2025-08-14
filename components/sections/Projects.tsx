@@ -6,13 +6,13 @@ import { CosmicBackground } from "../ui/CosmicBackground";
 
 const allProjects = [
   {
-    id: 'p1',
-    title: 'Project One',
+    id: 'nextjs-dashboard',
+    title: 'Next.js Dashboard',
     category: 'Web',
-    image: 'https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=600&q=80',
-    description: 'A modern web application built with Next.js and Tailwind CSS.',
+    image: 'https://images.unsplash.com/photo-1558655146-364adaf1fcc9?w=600&q=80&auto=format&fit=crop',
+    description: 'Interactive analytics dashboard built with Next.js, featuring responsive UI, reusable components, and modern styling.',
     tech: ['Next.js', 'Tailwind', 'TypeScript'],
-    github: '#',
+    github: 'https://github.com/Bibekadhikari77/nextjs-dashboard',
     demo: '#'
   },
   {
