@@ -1,7 +1,7 @@
 "use client";
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { FiMail, FiSend } from 'react-icons/fi';
+import { FiMail, FiSend, FiPhone, FiMapPin } from 'react-icons/fi';
 import { CosmicBackground } from "../ui/CosmicBackground";
 
 export function Contact() {
@@ -37,9 +37,32 @@ export function Contact() {
       <div className="container-base grid md:grid-cols-2 gap-12 relative z-10">
         <div className="space-y-6">
           <h2 className="text-3xl md:text-4xl font-bold">Get In Touch</h2>
-          <p className="text-neutral-600 dark:text-neutral-300">Have a project, idea or just want to say hi? Fill the form and I'll get back to you soon.</p>
-          <div className="flex items-center gap-3 text-neutral-700 dark:text-neutral-300">
-            <FiMail className="text-primary-600" /> <span>email@example.com</span>
+          <p className="text-neutral-600 dark:text-neutral-300">Have a project, idea or just want to say hi? Reach out via email, phone, or the form. I usually respond within 24 hours.</p>
+          <div className="space-y-3 text-neutral-700 dark:text-neutral-300">
+            <div className="flex items-center gap-3">
+              <FiMail className="text-primary-600" />
+              <a href="mailto:email@example.com" className="hover:underline">email@example.com</a>
+            </div>
+            <div className="flex items-center gap-3">
+              <FiPhone className="text-primary-600" />
+              <a href="tel:+1234567890" className="hover:underline">+977 9800662455</a>
+            </div>
+            <div className="flex items-start gap-3">
+              <FiMapPin className="text-primary-600 mt-0.5" />
+              <span>Kathmandu, Nepal</span>
+            </div>
+          </div>
+          <div className="relative h-56 md:h-64 rounded-xl overflow-hidden border border-neutral-200 dark:border-neutral-800 shadow-sm">
+            <div className="absolute inset-0 bg-gradient-to-br from-primary-500/5 via-fuchsia-500/5 to-indigo-500/5 pointer-events-none" />
+            <iframe
+              title="Location Map"
+              aria-label="Location map"
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              className="absolute inset-0 w-full h-full border-0"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d56516.88541527837!2d85.28493395742186!3d27.708955944527555!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb190b6f05348b%3A0x54a6763d211fba19!2sKathmandu!5e0!3m2!1sen!2snp!4v1689080700000!5m2!1sen!2snp"
+              allowFullScreen
+            />
           </div>
         </div>
         <motion.form initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} onSubmit={onSubmit} className="space-y-5">

@@ -68,9 +68,32 @@ export function Projects() {
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
           <AnimatePresence>
             {filtered.map((p, i) => (
-              <motion.div key={p.id} layout initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -30 }} transition={{ delay: i * 0.05 }} className="group rounded-2xl border border-neutral-200 dark:border-neutral-800 overflow-hidden bg-white dark:bg-neutral-900 hover:shadow-lg flex flex-col">
-                <div className="relative h-48">
-                  <Image src={p.image} alt={p.title} fill className="object-cover group-hover:scale-105 transition-transform duration-500" />
+              <motion.div
+                key={p.id}
+                layout
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -30 }}
+                transition={{ delay: i * 0.05 }}
+                whileHover={{ y: -10, scale: 1.02, boxShadow: '0 12px 32px -8px rgba(0,0,0,0.25)' }}
+                whileTap={{ scale: 0.97 }}
+                className="group rounded-2xl border border-neutral-200 dark:border-neutral-800 overflow-hidden bg-white dark:bg-neutral-900 hover:shadow-xl flex flex-col transition-all duration-300"
+              >
+                <div className="relative h-48 overflow-hidden">
+                  <motion.div
+                    className="absolute inset-0"
+                    initial={{ scale: 1 }}
+                    whileHover={{ scale: 1.08 }}
+                    transition={{ duration: 0.6, ease: 'easeOut' }}
+                  >
+                    <Image src={p.image} alt={p.title} fill className="object-cover" />
+                  </motion.div>
+                  <motion.div
+                    className="absolute inset-0 bg-gradient-to-br from-primary-500/0 via-primary-500/0 to-fuchsia-500/0 pointer-events-none"
+                    initial={{ opacity: 0 }}
+                    whileHover={{ opacity: 0.18 }}
+                    transition={{ duration: 0.4 }}
+                  />
                 </div>
                 <div className="p-6 flex flex-col gap-3 flex-1">
                   <h3 className="font-semibold text-lg">{p.title}</h3>

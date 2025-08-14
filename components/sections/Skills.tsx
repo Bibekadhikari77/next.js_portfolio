@@ -42,15 +42,15 @@ const categories = [
 
 export function Skills() {
   return (
-  <section id="skills" className="section-padding relative overflow-hidden bg-gradient-to-br from-primary-50 via-white to-indigo-50 dark:bg-neutral-950/40">
+  <section id="skills" className="section-padding bg-neutral-50 dark:bg-neutral-950/40 relative overflow-hidden">
       <CosmicBackground
-        stars={50}
+        stars={55}
         meteors={2}
         enableMeteors
-        collisionIntervalMs={2600}
-        className="opacity-70"
-        starClass="rounded-full bg-primary-300/60 dark:bg-indigo-300/80"
-        meteorClass="h-px bg-gradient-to-r from-primary-300/70 via-primary-200/40 to-transparent dark:from-indigo-300 dark:via-white"
+        collisionIntervalMs={2400}
+        className="opacity-60"
+        starClass="rounded-full bg-indigo-400/70 dark:bg-indigo-300/80"
+        meteorClass="h-px bg-gradient-to-r from-indigo-400/70 via-indigo-200/50 to-transparent dark:from-indigo-300 dark:via-white"
       />
       <div className="container-base relative z-10">
         <h2 className="text-3xl md:text-4xl font-bold mb-12">Skills</h2>
@@ -71,7 +71,7 @@ export function Skills() {
                   return (
                     <div
                       key={key}
-                      className="px-3 py-2 rounded-md bg-white dark:bg-neutral-800 text-sm text-neutral-700 dark:text-neutral-200 flex items-center gap-2 border border-neutral-200 dark:border-neutral-700 shadow-sm hover:border-primary-400/60 hover:bg-primary-50/60 dark:hover:bg-neutral-700/70 transition"
+                      className="px-3 py-2 rounded-md bg-neutral-100 dark:bg-neutral-800 text-sm text-neutral-700 dark:text-neutral-200 flex items-center gap-2 border border-neutral-200 dark:border-neutral-700 hover:border-primary-400/60 hover:bg-neutral-50 dark:hover:bg-neutral-700/70 transition"
                     >
                       {icon && <span className="text-base leading-none">{icon}</span>}
                       <span>{label}</span>
