@@ -1,0 +1,27 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-sans: 'Inter', system-ui, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-white dark:bg-neutral-900 text-neutral-800 dark:text-neutral-200 antialiased;
+}
+
+::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar-track { @apply bg-neutral-100 dark:bg-neutral-800; }
+::-webkit-scrollbar-thumb { @apply bg-neutral-300 dark:bg-neutral-600 rounded-full; }
+
+.section-padding { @apply py-20 md:py-28; }
+
+.container-base { @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8; }
+
+.gradient-text {
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-primary-500 via-fuchsia-500 to-indigo-500;
+}

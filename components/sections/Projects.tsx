@@ -1,0 +1,93 @@
+"use client";
+import Image from 'next/image';
+import { motion, AnimatePresence } from 'framer-motion';
+import { useState } from 'react';
+import { CosmicBackground } from "../ui/CosmicBackground";
+
+const allProjects = [
+  {
+    id: 'p1',
+    title: 'Project One',
+    category: 'Web',
+    image: 'https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=600&q=80',
+    description: 'A modern web application built with Next.js and Tailwind CSS.',
+    tech: ['Next.js', 'Tailwind', 'TypeScript'],
+    github: '#',
+    demo: '#'
+  },
+  {
+    id: 'p2',
+    title: 'Project Two',
+    category: 'Mobile',
+    image: 'https://images.unsplash.com/photo-1587620931283-d91f0d4a8e21?w=600&q=80',
+    description: 'Cross-platform mobile app with React Native.',
+    tech: ['React Native', 'Expo'],
+    github: '#',
+    demo: '#'
+  },
+  {
+    id: 'p3',
+    title: 'Project Three',
+    category: 'Web',
+    image: 'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=600&q=80',
+    description: 'Real-time dashboard with websockets.',
+    tech: ['Next.js', 'Socket.IO', 'Node.js'],
+    github: '#',
+    demo: '#'
+  }
+];
+
+const categories = ['All', 'Web', 'Mobile'];
+
+export function Projects() {
+  const [filter, setFilter] = useState('All');
+  const filtered = filter === 'All' ? allProjects : allProjects.filter(p => p.category === filter);
+  return (
+  <section id="projects" className="section-padding relative overflow-hidden">
+      <CosmicBackground
+        stars={50}
+        meteors={2}
+        enableMeteors
+        collisionIntervalMs={2100}
+        className="opacity-70"
+        starClass="rounded-full bg-primary-400/70 dark:bg-primary-300/80"
+        meteorClass="h-px bg-gradient-to-r from-primary-400/70 via-primary-200/50 to-transparent dark:from-primary-300 dark:via-white"
+      />
+      <div className="container-base relative z-10">
+        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-10">
+          <div>
+            <h2 className="text-3xl md:text-4xl font-bold">Projects</h2>
+            <p className="text-neutral-600 dark:text-neutral-300">Selected work that showcases my skills and experience.</p>
+          </div>
+          <div className="flex gap-3 flex-wrap">
+            {categories.map(c => (
+              <button key={c} onClick={() => setFilter(c)} className={`px-4 py-2 rounded-full text-sm font-medium border ${filter === c ? 'bg-primary-600 text-white border-primary-600' : 'border-neutral-300 dark:border-neutral-700 hover:bg-neutral-100 dark:hover:bg-neutral-800'}`}>{c}</button>
+            ))}
+          </div>
+        </div>
+        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+          <AnimatePresence>
+            {filtered.map((p, i) => (
+              <motion.div key={p.id} layout initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -30 }} transition={{ delay: i * 0.05 }} className="group rounded-2xl border border-neutral-200 dark:border-neutral-800 overflow-hidden bg-white dark:bg-neutral-900 hover:shadow-lg flex flex-col">
+                <div className="relative h-48">
+                  <Image src={p.image} alt={p.title} fill className="object-cover group-hover:scale-105 transition-transform duration-500" />
+                </div>
+                <div className="p-6 flex flex-col gap-3 flex-1">
+                  <h3 className="font-semibold text-lg">{p.title}</h3>
+                  <p className="text-sm text-neutral-600 dark:text-neutral-300 flex-1">{p.description}</p>
+                  <div className="flex flex-wrap gap-2">
+                    {p.tech.map(t => <span key={t} className="text-xs px-2 py-1 rounded-md bg-neutral-100 dark:bg-neutral-800">{t}</span>)}
+                  </div>
+                  <div className="flex gap-3 pt-2">
+                    <a href={p.demo} className="text-sm font-medium px-4 py-2 rounded-md bg-primary-600 text-white hover:bg-primary-500">Live Demo</a>
+                    <a href={p.github} className="text-sm font-medium px-4 py-2 rounded-md border border-neutral-300 dark:border-neutral-700 hover:bg-neutral-100 dark:hover:bg-neutral-800">GitHub</a>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </AnimatePresence>
+        </div>
+      </div>
+    </section>
+  );
+}
