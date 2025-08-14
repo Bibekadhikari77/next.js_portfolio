@@ -87,37 +87,7 @@ You can detect `prefers-reduced-motion` and disable meteor animations inside `Co
 ### Re‑adding Removed Sections
 Previously removed: Blog, Experience, Testimonials. Reintroduce by adding section components (e.g. `components/sections/Blog.tsx`) and inserting them into `app/page.tsx` & Navbar.
 
-## 🔐 Environment Variables (if adding email service)
-Create a `.env.local`:
-```
-EMAIL_API_KEY=...
-EMAIL_TO=you@example.com
-EMAIL_FROM=portfolio@example.com
-```
-Then consume inside the `/api/contact/route.ts`.
+<img width="1600" height="690" alt="image" src="https://github.com/user-attachments/assets/6f9bc461-be47-459d-8132-33d3183ee95e" />
+<img width="1600" height="677" alt="image" src="https://github.com/user-attachments/assets/8738c66e-125a-4782-9237-2c9ff3131103" />
 
-## 🧪 Testing Ideas (Not included by default)
-You can add unit tests with Vitest / Jest for utility functions or integration tests with Playwright for form & navigation behavior.
 
-## 📦 Deployment
-- Recommended: **Vercel** (zero config for Next.js)
-- Ensure any required environment variables are added in Vercel dashboard
-- After deploy, verify: dark mode toggle, contact POST (network tab), layout shifts (CLS ~0), Lighthouse scores.
-
-## 🛠 Performance Notes
-- Star / meteor counts tuned for low layout thrash; elements kept minimal
-- Animations use opacity/transform (GPU friendly)
-- Images served via `next/image` for responsive optimization
-
-## ❓ FAQ
-**Why App Router single page?** Simplifies anchor navigation & scroll performance while still leveraging server components where static.
-
-**How to add a new section?** Create a file in `components/sections`, export component, import and insert into `app/page.tsx`, add anchor link in `Navbar`.
-
-**Can I switch to multi-page?** Yes: move each section to its own `app/<route>/page.tsx`, update Navbar links, and optionally lazy-load heavy sections.
-
-## 📝 License
-MIT
-
----
-Feel free to fork, adapt, and share. Contributions or suggestions welcome.
