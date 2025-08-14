@@ -89,5 +89,8 @@ Previously removed: Blog, Experience, Testimonials. Reintroduce by adding sectio
 
 <img width="1600" height="690" alt="image" src="https://github.com/user-attachments/assets/6f9bc461-be47-459d-8132-33d3183ee95e" />
 <img width="1600" height="677" alt="image" src="https://github.com/user-attachments/assets/8738c66e-125a-4782-9237-2c9ff3131103" />
+<img width="1600" height="674" alt="image" src="https://github.com/user-attachments/assets/063a6ec6-665b-457d-a8f5-dc375cfcc61b" />
+<img width="1600" height="709" alt="image" src="https://github.com/user-attachments/assets/cf9dea4f-3f39-4758-af26-ccec6d27d1e7" />
+<img width="1600" height="709" alt="image" src="https://github.com/user-attachments/assets/cac704a8-e6c4-4d57-882c-f59aacd93516" />
 
 
